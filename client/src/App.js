@@ -3,11 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import Home from './Containers/home'
 
+import Signup from './Containers/signup'
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Home/>
+        <Signup/>
       </div>
     );
   }
