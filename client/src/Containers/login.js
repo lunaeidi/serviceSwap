@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import Redirect from 'react-router-dom'
 class Signup extends Component {
   state={
     username: "",
@@ -20,9 +21,9 @@ handleSubmit(event){
 
   fetch('http://localhost:2000/api/users')
   .then(res => res.json())
-  .then(res => this.setState({})console.log(res) )
+  .then(res => console.log(res) )
   //compare this.state.username to the ones given back in the res
-  res.map(user=>return user.username)
+  res.map((user)=>{return user.username}) //res is not defined 
   for (let i=0;i<res.length;i++){
     if (res[i] == this.state.username )
     this.setState({valid: true})
@@ -31,7 +32,7 @@ handleSubmit(event){
 }
   render() {
     return(
-      this.state.valid == true? <Redirect to= "/loggedinhome"> : null
+     // this.state.valid == true? <Redirect to= "/loggedinhome"> :
       <div>
         <form onSubmit={ event => this.handleSubmit(event) }>
             <p>Username:<input value={this.state.username}onChange={(event) => this.handleUsername(event)}type="text" /></p>
