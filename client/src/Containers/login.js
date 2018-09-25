@@ -31,6 +31,7 @@ handleSubmit(event){
 }
   render() {
     return(
+      this.state.valid == true? <Redirect to= "/loggedinhome"> : null
       <div>
         <form onSubmit={ event => this.handleSubmit(event) }>
             <p>Username:<input value={this.state.username}onChange={(event) => this.handleUsername(event)}type="text" /></p>
