@@ -3,7 +3,8 @@ import styled from 'styled-components'
 class Signup extends Component {
   state={
     username: "",
-    password:""
+    password:"",
+    valid: null
   }
   handleUsername(event) {
   this.setState({
@@ -16,20 +17,17 @@ handlePassword(event){
   })
 }
 handleSubmit(event){
-  let postBody= {
-    username: this.state.username,
-    password: this.state.password
+
+  fetch('http://localhost:2000/api/users')
+  .then(res => res.json())
+  .then(res => this.setState({})console.log(res) )
+  //compare this.state.username to the ones given back in the res
+  res.map(user=>return user.username)
+  for (let i=0;i<res.length;i++){
+    if (res[i] == this.state.username )
+    this.setState({valid: true})
   }
-  fetch('http://localhost:2000/api/users', {
 
-              method: 'POST',
-              body: JSON.stringify(postBody),
-
-              headers:{
-                  'Content-Type': 'application/json'
-              }
-          }).then(res => res.json())
-                            .then(res => console.log(res) )
 }
   render() {
     return(
