@@ -21,13 +21,13 @@ handleSubmit(event){
 
   fetch('http://localhost:2000/api/users')
   .then(res => res.json())
-  .then(res => console.log(res) )
+  .then(res => res.map((user)=>{return user.username}).forEach((value)=>
+  {if (value == this.state.username)
+  {this.setState({valid: true})}}
+  )
+)
+
   //compare this.state.username to the ones given back in the res
-  res.map((user)=>{return user.username}) //res is not defined 
-  for (let i=0;i<res.length;i++){
-    if (res[i] == this.state.username )
-    this.setState({valid: true})
-  }
 
 }
   render() {
