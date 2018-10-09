@@ -10,7 +10,8 @@ class Messages extends Component{
     let messages=[]
     json.forEach((message)=>{
       let obj={}
-      obj[message['sender']]= message['content']
+      let key=message['sender'].username
+      obj[key]= message['content']
       messages.push(obj)
     })
   )
