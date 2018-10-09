@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import Message from '../../components/message'
 class Messages extends Component{
   state={
     messages: []
   }
+
   componentDidMount(){
     fetch('http://localhost:2000/api/messages')
     .then(res=>res.json())
@@ -17,10 +19,17 @@ class Messages extends Component{
   )
   this.setState({messages:messages})
   }
+  selectHandler(event){
+    this.setState({selected:event.value})
+  }
   render() {
-
     return (
-
+<div>
+{this.state.messages.map((message)=>{"test"})}
+<Message
+selected= {this.prop.selected}
+>
+</div>
     );
   }
 }
