@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Message from '../../components/message'
+import Message from '../components/message'
+import axios from 'axios'
 class Messages extends Component{
   state={
     messages: []
@@ -8,7 +9,7 @@ class Messages extends Component{
   componentDidMount(){
     fetch('http://localhost:2000/api/messages')
     .then(res=>res.json())
-    .then(json=>console.log(json)
+    .then(json=>{console.log(json)
     let messages=[]
     json.forEach((message)=>{
       let obj={}
@@ -16,8 +17,11 @@ class Messages extends Component{
       obj[key]= message['content']
       messages.push(obj)
     })
+this.setState({messages:messages})
+  }
+
   )
-  this.setState({messages:messages})
+
   }
   selectHandler(event){
     this.setState({selected:event.value})
@@ -27,8 +31,8 @@ class Messages extends Component{
 <div>
 {this.state.messages.map((message)=>{"test"})}
 <Message
-selected= {this.prop.selected}
->
+selected= {this.props.selected}
+/>
 </div>
     );
   }
