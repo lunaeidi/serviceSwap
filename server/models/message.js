@@ -5,10 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    sender: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
+    
     receiver: {
       type: DataTypes.STRING,
       allowNull: false
