@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Profile from './profile'
 import styled from 'styled-components'
+import axios from 'axios'
 
 const Nav = styled.nav`
   background-color: green;
@@ -15,8 +16,12 @@ const A =styled.a`
 
 const P = styled.p`
 margin-top: 5vh;
+
 `
 class Home extends Component {
+  componentDidMount(){
+
+  }
   render() {
     return (
       <div>

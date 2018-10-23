@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
+import axios from 'axios'
 class Signup extends Component {
   state={
     username: "",
@@ -16,29 +17,21 @@ handlePassword(event){
   })
 }
 handleSubmit(event){
-  let postBody= {
+    let postBody= {
     username: this.state.username,
-    password: this.state.password
+    password: this.state.password,
+    email: "hi@gmail.com"
   }
-  fetch('http://localhost:2000/api/users', {
-
-              method: 'POST',
-              body: JSON.stringify(postBody),
-
-              headers:{
-                  'Content-Type': 'application/json'
-              }
-          }).then(res => res.json())
-                            .then(res => console.log(res) )
+  axios.post('http://localhost:2000/api/users', postBody).then(res=>console.log(res))
 }
   render() {
     return(
       <div>
-        <form onSubmit={ event => this.handleSubmit(event) }>
+        <form>
             <p>Username:<input value={this.state.username}onChange={(event) => this.handleUsername(event)}type="text" /></p>
             <p>Password:<input value={this.state.password}onChange={(event) => this.handlePassword(event)}type="password"/></p>
 
-          <input type="submit" value="Signup" />
+          <input type="button" value="Signup"  onClick={ event => this.handleSubmit(event) }/>
         </form>
       </div>
     );
