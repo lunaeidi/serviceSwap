@@ -22,7 +22,11 @@ handleSubmit(event){
     password: this.state.password,
     email: "hi@gmail.com"
   }
-  axios.post('http://localhost:2000/api/users', postBody).then(res=>console.log(res))
+  // axios.post('http://localhost:2000/api/users', postBody).then(res=>console.log(res))
+  fetch('http://localhost:2000/api/messages')
+  .then(res=>res.json())
+  .then(json=>{console.log(json)
+
 }
   render() {
     return(
